@@ -14,10 +14,10 @@ pan=0
 tilt=0
 
 moveBindings = {
-        'w':(2,0,0,0),
-        's':(-2,0,0,0),
-        'a':(0,-2,0,0),
-        'd':(0,2,0,0),
+        's':(1,0,0,0),
+        'w':(-1,0,0,0),
+        'd':(0,-1,0,0),
+        'a':(0,1,0,0),
     }
 
 def getKey():
@@ -67,24 +67,24 @@ if __name__=="__main__":
             elif(pan_counter<-90):
                 pan=-90
             else:
-                pan=pan+x
+                pan=pan+y
             
             if(tilt_counter>90):
                 tilt=90
             elif(tilt_counter<-90):
                 tilt=-90
             else:
-                tilt=tilt+y            
+                tilt=tilt+x            
 
-            commands.x=pan
-            commands.y=tilt
+            commands.x=tilt
+            commands.y=pan
 
 
-            pan_counter=pan_counter+x
-            tilt_counter=tilt_counter+y
+            pan_counter=pan_counter+y
+            tilt_counter=tilt_counter+x
             print("w: up  s: down  a: left  d: right")
-            print("pan  : "+str(pan)+" Degrees")
-            print("tilt : "+str(tilt)+" Degrees")
+            print("pan  : "+str(-pan)+" Degrees")
+            print("tilt : "+str(-tilt)+" Degrees")
             print("......................")
 
             pub.publish(commands)
